@@ -1,4 +1,5 @@
 var $input = $('input');
+var $place = $('.placeholder');
 
 $(function() {
 	$input.on('focus', function(){
@@ -7,17 +8,19 @@ $(function() {
 			top: '-30%',
 		});
 		$('.input').animate({
-			paddingTop: '20px',
-			paddingBottom: '20px',
+			paddingTop: '2em',
+			paddingBottom: '2em',
 		});
 	});
+
 	$input.on('focusout', function(){
 		console.log('unfocused');
 		$('.placeholder').animate({
 			top: '50%',
 		});
 		$('.input').animate({
-			padding: '5px',
+			padding: '1em',
 		})
 	});
+
 });
