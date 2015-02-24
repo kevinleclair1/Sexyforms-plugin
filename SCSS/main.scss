@@ -4,14 +4,28 @@
 .container {
 	width: 80%;
 	text-align: center;
-	margin: 0 auto;
+	margin: 50px auto;
 }
 .input {
 	position: relative;
+	z-index: 1;
+	border-top: 5px solid black;
+	border-bottom: 5px solid black;
+	padding: 5px;
+	background: mistyrose;
+}
+input {
+	border: none;
+	&:focus {
+		outline: none;
+	}
 }
 .placeholder {
 	position: absolute;
 	left: 2px;
 	top: 50%;
 	transform: translateY(-50%);
+	font-size: 20px;
+	background: goldenrod;
+
 }
