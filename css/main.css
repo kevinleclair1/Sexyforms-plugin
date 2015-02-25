@@ -158,11 +158,11 @@ body {
   border-bottom: 5px solid #6A7989;
   padding: 15px; }
 
-.style1 {
+.input1 {
   border: none;
   font-size: 50px;
   background: transparent; }
-  .style1:focus {
+  .input1:focus {
     outline: none; }
 
 .placeholder1 {

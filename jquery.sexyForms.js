@@ -1,37 +1,43 @@
 	//variables
-	var placeText1 = $('.input').data('placeholder');
 
-	var placeInject = $('<span>').addClass('placeholder1').text(placeText1);
-	var inputInject = $('<input>').attr("type","text").addClass('style1');
-	
-	$('.input').append(inputInject, placeInject);
-	
+		
 	var $style2 = $('.input2');
 	var $style3 = $('.input3');
-	var $input1 = $('.style1');
+	
 	var $input2 = $('.style2');
 	var $input3 = $('.style3');
-	var $place1 = $('.placeholder1');
+	
 	var $place2 = $('.placeholder2');
 	var $place3 = $('.placeholder3');
-	var styleSpeed = 200;
 
-$(function() {
+$.fn.sexyForm = function (style){
 
 	//style 1
-	$input1.on('focus', function(){
-		console.log('focused');
-		if ( $input1.val() === "") {
+	if ( style === 'one') {
+		var placeText1 = $('.input').data('placeholder');
+
+		var placeInject = $('<span>').addClass('placeholder1').text(placeText1);
+		var inputInject = $('<input>').attr("type","text").addClass('input1');
+
+		$('.input').append(inputInject, placeInject);
+
+		var $input1 = $('.input1');
+		var $place1 = $('.placeholder1');
+
+		$input1.on('focus', function(){
 			console.log('focused');
-			$('.placeholder1').animate({
-				top: '-30%',
-			});
-			$('.input').animate({
-				paddingTop: '2em',
-				paddingBottom: '2em',
-			});
-		};
-	});
+			if ( $input1.val() === "") {
+				console.log('focused');
+				$('.placeholder1').animate({
+					top: '-30%',
+				});
+				$('.input').animate({
+					paddingTop: '2em',
+					paddingBottom: '2em',
+				});
+			};
+		});
+	};
 	$place1.on('click', function(){
 		$input1.trigger('focus');
 	});
@@ -96,4 +102,4 @@ $(function() {
 	// 		})
 	// 	};
 	// });
-});
+};
