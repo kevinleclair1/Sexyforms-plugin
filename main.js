@@ -1,3 +1,3 @@
 $(function() {
-	$('.input').sexyForm('one');
+	$('.input').sexyForm('three');
 });
