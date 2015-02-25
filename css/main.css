@@ -198,3 +198,34 @@ body {
   padding: 0; }
   .style2:focus {
     outline: none; }
+
+.input3 {
+  background: #EFEEEE;
+  width: 40%;
+  position: relative;
+  display: inline-block;
+  text-align: left;
+  font-size: 0;
+  overflow: hidden;
+  border: 1px solid black;
+  cursor: text; }
+
+.placeholder3 {
+  width: 100%;
+  font-size: 20px;
+  position: relative;
+  left: 0%;
+  display: block;
+  padding: 15px;
+  cursor: text; }
+
+.style3 {
+  border: none;
+  position: absolute;
+  left: -70%;
+  font-size: 20px;
+  padding: 15px;
+  display: block;
+  width: 70%; }
+  .style3:focus {
+    outline: none; }
