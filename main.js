@@ -12,6 +12,9 @@ $(function() {
 			paddingBottom: '2em',
 		});
 	});
+	$place.on('click', function(){
+		$input.trigger('focus');
+	});
 
 	$input.on('focusout', function(){
 		console.log('unfocused');
