@@ -1,6 +1,3 @@
-	//variables
-
-		
 	
 $.fn.sexyForm = function (style){
 
@@ -17,16 +14,19 @@ $.fn.sexyForm = function (style){
 
 		$('.input').append(inputInject, placeInject);
 
+		var $style1 = $('.style1');
 		var $input1 = $('.input1');
 		var $place1 = $('.placeholder1');
 
 		//ANIMATIONS
 
-		$input1.on('focus', function(){
-			console.log('focused');
-			if ( $input1.val() === "") {
-				console.log('focused');
-				$('.placeholder1').animate({
+		$style1.on('click', function(){
+			var currentId = '#' + $(this).attr('id');
+			var $currentInput = $(currentId).children('input')
+			var $currentPlace = $(currentId).children('span')
+			console.log($input1);
+			if ( $currentInput.val() === "") {
+				$currentPlace.animate({
 					top: '-30%',
 				});
 				$('.input').animate({
@@ -37,6 +37,7 @@ $.fn.sexyForm = function (style){
 		});
 		$place1.on('click', function(){
 			$input1.trigger('focus');
+			console.log('clicked');
 		});
 		$input1.on('focusout', function(){
 			if ( $input1.val() === "") {
@@ -47,6 +48,7 @@ $.fn.sexyForm = function (style){
 				$('.input').animate({
 					padding: '1em',
 				})
+				$style1.removeClass('animate');
 			};
 		});
 	};
@@ -69,17 +71,20 @@ $.fn.sexyForm = function (style){
 
 		//ANIMATIONS
 		$style2.on('click', function(){
-			if ( $input2.val() === "") {
+			var currentId = '#' + $(this).attr('id');
+			var $currentInput = $(currentId).children('input')
+			var $currentPlace = $(currentId).children('span')
+			if ( $currentInput.val() === "") {
 				console.log('clicked');
-				$input2.animate({
+				$currentInput.animate({
 					fontSize: '30px',
 					padding: '15px',
 					paddingLeft: '5px',
 				});
-				$place2.animate({
+				$currentPlace.animate({
 					fontSize: '1.3em'
 				});
-				$input2.trigger('focus');
+				$currentInput.trigger('focus');
 			};
 		}); //end of $style2.click
 		$input2.on('focusout', function(){
@@ -110,15 +115,19 @@ $.fn.sexyForm = function (style){
 		var $place3 = $('.placeholder3');
 
 		$place3.on('click', function(){
-			if ( $input3.val() === "") {
-				$input3.animate({
+			console.log('clicked');
+			var currentId = '#' + $(this).parent().attr('id');
+			var $currentInput = $(currentId).children('input');
+			var $currentPlace = $(currentId).children('span');
+			if ( $currentInput.val() === "") {
+				$currentInput.animate({
 					left: '0',
 				})
-				$place3.animate({
+				$currentPlace.animate({
 					width: '30%',
 					left: '70%',
 				})
-				$input3.trigger('focus');
+				$currentInput.trigger('focus');
 			};
 		});
 		$input3.on('focusout', function(){

@@ -155,6 +155,5 @@ body {
   margin: 80px auto; }
 
 .input {
-  display: block;
-  margin: 0 auto;
-  width: 50%; }
+  display: inline-block;
+  width: 40%; }
