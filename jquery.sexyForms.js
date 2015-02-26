@@ -7,6 +7,9 @@ $.fn.sexyForm = function (style){
 	//style 1
 	if ( style === 'one') {
 		$('.input').addClass('style1');
+
+		//VARIABLES AND INSERTING MARKUP
+
 		var placeText1 = $('.input').data('placeholder');
 
 		var placeInject = $('<span>').addClass('placeholder1').text(placeText1);
@@ -16,6 +19,8 @@ $.fn.sexyForm = function (style){
 
 		var $input1 = $('.input1');
 		var $place1 = $('.placeholder1');
+
+		//ANIMATIONS
 
 		$input1.on('focus', function(){
 			console.log('focused');
@@ -46,8 +51,10 @@ $.fn.sexyForm = function (style){
 		});
 	};
 	if ( style === 'two') {
+		//style 2
+		
+		// VARIABLES AND INSERTING MARKUP
 
-		// style 2
 		$('.input').addClass('style2');
 		var placeText1 = $('.input').data('placeholder');
 
@@ -60,6 +67,7 @@ $.fn.sexyForm = function (style){
 		var $place2 = $('.placeholder2');
 		var $style2 = $('.style2');
 
+		//ANIMATIONS
 		$style2.on('click', function(){
 			if ( $input2.val() === "") {
 				console.log('clicked');
@@ -73,7 +81,7 @@ $.fn.sexyForm = function (style){
 				});
 				$input2.trigger('focus');
 			};
-		});
+		}); //end of $style2.click
 		$input2.on('focusout', function(){
 			if ( $input2.val() === "") {
 				$input2.animate({
@@ -84,8 +92,8 @@ $.fn.sexyForm = function (style){
 					fontSize: '30px'
 				});
 			};
-		});
-	};
+		}); //end of $input2.focusout
+	}; //end of style 2 scripts
 	if ( style === 'three') {
 
 		//style 3

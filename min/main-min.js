@@ -1,1 +1,1 @@
-$(function(){$(".input").sexyForm("three")});
+$(function(){var e=$(".input"),a=$("option:selected").val();e.sexyForm(a),$("select").on("change",function(){var a=$("option:selected").val();$(".formContainer").children().remove();var n=$("<span>").addClass("input").attr("data-placeholder","First Name");$(".formContainer").append(n),e.sexyForm(a)})});
