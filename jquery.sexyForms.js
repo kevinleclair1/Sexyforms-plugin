@@ -26,10 +26,10 @@ $.fn.sexyForm = function (style){
 			e.stopPropagation();
 			$(this).addClass('form-open');
 			//ANIMATION VARIABLES
-			var currentId = '#' + $(this).attr('id');
-			var $currentInput = $(currentId).children('input')
-			var $currentPlace = $(currentId).children('span')
-			var $currentBox = $(currentId);
+			var $open = $('.form-open');
+			var $currentInput = $open.children('input')
+			var $currentPlace = $open.children('span')
+			var $currentBox = $open;
 
 			if($(this).data('original-styles') === undefined) {
 				//Store data for original styles in object
@@ -76,10 +76,9 @@ $.fn.sexyForm = function (style){
 			e.stopPropagation();
 			$(this).addClass('form-open');
 			//ANIMATION VARIABLES
-			var currentId = '#' + $(this).attr('id');
-			var $currentInput = $(currentId).children('input')
-			var $currentPlace = $(currentId).children('span')
-			
+			var $open = $('.form-open');
+			var $currentInput = $open.children('input')
+			var $currentPlace = $open.children('span')
 			//Check it current element has data attribure
 			if($(this).data('original-styles') === undefined) {
 				//Store data for original styles in object
@@ -129,9 +128,10 @@ $.fn.sexyForm = function (style){
 			e.stopPropagation();
 			$(this).parent().addClass('form-open');
 			//ANIMATION VARIABLES
-			var currentId = '#' + $(this).parent().attr('id');
-			var $currentInput = $(currentId).children('input');
-			var $currentPlace = $(currentId).children('span');
+			var $open = $('.form-open');
+			var $currentInput = $open.children('input')
+			var $currentPlace = $open.children('span')
+
 			if($(this).parent().data('original-styles') === undefined) {
 				//Store data for original styles in object
 				//So later you can get it and animate it back.

@@ -1,22 +1,58 @@
 @import "_setup";
 @import "_juice";
 
+$subcolour : #7b8993;
+
+html , body {
+	font-size: 10px;
+}
 body {
-	font-family: 'Raleway', sans-serif;
-	background: #F0EFEE;
-	color: #6A7989;
+	font-family: 'Roboto', sans-serif;
+	background: white;
+	color: $subcolour;
+	position: relative;
 }
 
 .container {
 	width: 80%;
 	text-align: center;
-	margin: 40px auto;
+	margin: 0 auto;
+	h1 {
+		font-size: 8rem;
+	}
+	h3 {
+		font-size: 2rem;
+	}
+	a, p {
+		font-size: 2rem;
+		font-weight: 300;
+		text-decoration: none;
+	}
+}
+.stylesNav {
+	background-color: transparent;
+	background-image: url('Images/ddown.svg');
+	background-repeat: no-repeat;
+	background-size: 2.5rem 2rem;
+	background-position: right center;
+	font-size: 2rem;
+	display: block;
+	margin: 20px auto;
+	font-weight: 300;
+	border: 1px solid #c0c8c9;
+	width: 15%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	padding: 5px;
+	&:focus {
+		outline: none;
+	}
 }
 .formContainer {
-	margin: 80px auto;
+	margin: 60px auto;
 }
 .input {
 	display: inline-block;
-	width: 40%;
-	margin: 0 2.5%;
+	width: 35%;
+	margin: 0 5%;
 }
