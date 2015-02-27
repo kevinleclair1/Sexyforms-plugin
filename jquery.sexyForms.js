@@ -10,6 +10,7 @@ $.fn.sexyForm = function (style){
 	if ( style === 'one') {
 		//INITIAL HTML MARKUP INJECT
 		var placeText = $('.input').data('placeholder');
+
 		var placeInject = $('<span>').addClass('placeholder1').text(placeText);
 		var inputInject = $('<input>').attr("type","text").addClass('input1');
 		$('.input').append(inputInject, placeInject);
@@ -17,21 +18,26 @@ $.fn.sexyForm = function (style){
 		//ADDING STYLE CLASS
 		$('.input').addClass('style1');
 		var $style1 = $('.style1');
-
+		$style1.data('style', 1);
 		//ANIMATIONS ON CLICK
-
-		$style1.on('click', function(){
-
+		$style1.on('click', function(e){
+			e.stopPropagation();
+			$(this).addClass('form-open');
 			//ANIMATION VARIABLES
 			var currentId = '#' + $(this).attr('id');
 			var $currentInput = $(currentId).children('input')
 			var $currentPlace = $(currentId).children('span')
 			var $currentBox = $(currentId);
 
-			//ANIMATION CSS STARTING VALUES
-			var startPad = $currentBox.css('padding');
-			var startPos = $currentPlace.css('top');
-
+			if($(this).data('original-styles') === undefined) {
+				//Store data for original styles in object
+				//So later you can get it and animate it back.
+				$(this).data('original-styles', {
+					startPad: $currentBox.css('padding'),
+					startPos: '50%',
+				});
+			}
+		
 			$currentInput.trigger('focus');
 			console.log('focused');
 			if ( $currentInput.val() === "") {
@@ -43,18 +49,6 @@ $.fn.sexyForm = function (style){
 					paddingBottom: '2em',
 				});
 			};
-			$currentInput.one('focusout', function(){
-				if ( $currentInput.val() === "") {
-					console.log('unfocused');
-					$currentPlace.animate({
-						top: startPos,
-					});
-					$currentBox.animate({
-						padding: startPad,
-					})
-					$currentBox.removeClass('animate');
-				};
-			}); //end of focusout listener
 		}); //end of style1 click listener
 	}; //end of style one js
 	if ( style === 'two') {
@@ -69,21 +63,27 @@ $.fn.sexyForm = function (style){
 
 		$('.input').addClass('style2');
 		var $style2 = $('.style2');
+		$style2.data('style', 2);
 
 		//ANIMATIONS
-		$style2.on('click', function(){
-			
+		$style2.on('click', function(e){
+			e.stopPropagation();
+			$(this).addClass('form-open');
 			//ANIMATION VARIABLES
 			var currentId = '#' + $(this).attr('id');
 			var $currentInput = $(currentId).children('input')
 			var $currentPlace = $(currentId).children('span')
-
-			//ANIMATION CSS STARTING VALUES
-			var startFontInput = $currentInput.css('font-size');
-			var startPadInput = $currentInput.css('padding');
-			var startFontPlace = $currentPlace.css('font-size');
-
-
+			
+			//Check it current element has data attribure
+			if($(this).data('original-styles') === undefined) {
+				//Store data for original styles in object
+				//So later you can get it and animate it back.
+				$(this).data('original-styles', {
+					startFontInput: $currentInput.css('font-size'),
+					startPadInput: $currentInput.css('padding'),
+					startFontPlace: $currentPlace.css('font-size')
+				});
+			}
 			if ( $currentInput.val() === "") {
 				console.log('clicked');
 				$currentInput.animate({
@@ -96,17 +96,6 @@ $.fn.sexyForm = function (style){
 				});
 				$currentInput.trigger('focus');
 			};
-			$currentInput.one('focusout', function(){
-				if ( $currentInput.val() === "") {
-					$currentInput.animate({
-						fontSize: startFontInput,
-						padding: startPadInput
-					});
-					$currentPlace.animate({
-						fontSize: startFontPlace
-					});
-				};
-			}); //end of $input2.focusout
 		}); //end of $style2.click
 	}; //end of style 2 scripts
 	if ( style === 'three') {
@@ -122,21 +111,28 @@ $.fn.sexyForm = function (style){
 		$('.input').append(inputInject, placeInject);
 
 		$('.input').addClass('style3');
+		var $style3 = $('.style3');
+		$style3.data('style', 3);
 		var $place3 = $('.placeholder3');
 
 		//ANIMATIONS
 
-		$place3.on('click', function(){
-			
+		$place3.on('click', function(e){
+			e.stopPropagation();
+			$(this).parent().addClass('form-open');
 			//ANIMATION VARIABLES
 			var currentId = '#' + $(this).parent().attr('id');
 			var $currentInput = $(currentId).children('input');
 			var $currentPlace = $(currentId).children('span');
-
-			//ANIMATION CSS STARTING VALUES
-			var startPosInput = $currentInput.css('left');
-			var startWidth = $currentPlace.css('width');
-			var startPosPlace = $currentPlace.css('left');
+			if($(this).parent().data('original-styles') === undefined) {
+				//Store data for original styles in object
+				//So later you can get it and animate it back.
+				$(this).parent().data('original-styles', {
+					startPosInput: $currentInput.css('left'),
+					startWidth: $currentPlace.css('width'),
+					startPosPlace: $currentPlace.css('left')
+				});
+			}
 
 			if ( $currentInput.val() === "") {
 				$currentInput.animate({
@@ -148,18 +144,69 @@ $.fn.sexyForm = function (style){
 				})
 				$currentInput.trigger('focus');
 			};
-			$currentInput.one('focusout', function(){
-				if ( $currentInput.val() === "") {
-					$currentInput.animate({
-						left: startPosInput,
-					})
-					$currentPlace.animate({
-						width: startWidth,
-						left: startPosPlace,
-					})
-				};
-			});
 		});
 	}
+	//Check on click of the document 
+	$(document).on('click', function() {
+		//Grab elements with the calss of .form-open
+		var $forms = $('.form-open');
+		//If we have some
+		if($('.form-open').length > 0) {
+			//Loop through them with each
+			$forms.each(function(index, element) {
+				//Each returns the index of the element and the element itself
+				//Check if elements input is blank
+				if($(element).find('input').val() === '') {
+					//If so remove class so we stop looking at it
+					$(element).removeClass('form-open');
+					//Pass element to closeBox function
+					closeBox($(element));
+				}
+			});
+		} 
+	});
+
+	function closeBox(element) {
+		console.log('hey');
+		//Get the element that needs to be closed
+		var $el = $(element);
+		//Grab the data we set on it
+		var originalData = $el.data('original-styles');
+		var style = $el.data('style');
+		console.log(style);
+		console.log($el);
+		//Reset the input
+		if ( style === 1 ) {
+			console.log("hey");
+			$el.find('span').animate({
+				top: originalData.startPos,
+			});
+			$el.animate({
+				padding: originalData.startPad,
+			})
+
+		};
+		if ( style === 2 ) {
+			$el.find('input').animate({
+				fontSize: originalData.startFontInput,
+				padding: originalData.startPadInput
+			});
+			//Reset the span
+			$el.find('span').animate({
+				fontSize: originalData.startFontPlace
+			});
+		};
+		if (style === 3) {
+			$el.find('input').animate({
+				left: originalData.startPosInput
+			})
+			$el.find('span').animate({
+				width: originalData.startWidth,
+				left: originalData.startPosPlace,
+			})
+		};
+	}
+
+
 };
 	
