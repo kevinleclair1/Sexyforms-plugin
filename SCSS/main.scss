@@ -1,5 +1,4 @@
 @import "_setup";
-@import "_grid";
 @import "_juice";
 
 body {
@@ -19,4 +18,5 @@ body {
 .input {
 	display: inline-block;
 	width: 40%;
+	margin: 0 2.5%;
 }

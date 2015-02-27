@@ -9,12 +9,14 @@ $.fn.sexyForm = function (style){
 	//style 1
 	if ( style === 'one') {
 		//INITIAL HTML MARKUP INJECT
-		var placeText = $('.input').data('placeholder');
-
-		var placeInject = $('<span>').addClass('placeholder1').text(placeText);
-		var inputInject = $('<input>').attr("type","text").addClass('input1');
-		$('.input').append(inputInject, placeInject);
-
+		var $input = $('.input');
+		for (var i = 0; i < $input.length; i++) {
+			var placeText = $($('.input')[i]).data('placeholder');
+			var placeInject = $('<span>').addClass('placeholder1').text(placeText);
+			var inputInject = $('<input>').attr("type","text").addClass('input1');
+			$($input[i]).append(inputInject, placeInject)
+		};
+		
 		//ADDING STYLE CLASS
 		$('.input').addClass('style1');
 		var $style1 = $('.style1');
@@ -34,7 +36,8 @@ $.fn.sexyForm = function (style){
 				//So later you can get it and animate it back.
 				$(this).data('original-styles', {
 					startPad: $currentBox.css('padding'),
-					startPos: '50%',
+					startPos: '50%'
+					//$currentPlace.css('top')
 				});
 			}
 		
@@ -53,13 +56,16 @@ $.fn.sexyForm = function (style){
 	}; //end of style one js
 	if ( style === 'two') {
 		//style 2
-		
+		var $input = $('.input');
+		for (var i = 0; i < $input.length; i++) {
+			var placeText = $($input[i]).data('placeholder');
+			var placeInject = $('<span>').addClass('placeholder2').text(placeText);
+			var inputInject = $('<input>').attr("type","text").addClass('input2');
+			$($input[i]).append(placeInject, inputInject);
+		};
 		//INITIAL HTML MARKUP INJECT
-		var placeText = $('.input').data('placeholder');
+		
 
-		var placeInject = $('<span>').addClass('placeholder2').text(placeText);
-		var inputInject = $('<input>').attr("type","text").addClass('input2');
-		$('.input').append(placeInject, inputInject);
 
 		$('.input').addClass('style2');
 		var $style2 = $('.style2');
@@ -99,16 +105,18 @@ $.fn.sexyForm = function (style){
 		}); //end of $style2.click
 	}; //end of style 2 scripts
 	if ( style === 'three') {
-
 		//style 3
+		var $input = $('.input');
 
+		for (var i = 0; i < $input.length; i++) {
+			var placeText = $($input[i]).data('placeholder');
+			var placeInject = $('<span>').addClass('placeholder3').text(placeText);
+			var inputInject = $('<input>').attr("type","text").addClass('input3');
+			$($input[i]).append(inputInject, placeInject);
+
+		};
 		//INITIAL HTML MARKUP INJECT
-		var placeText = $('.input').data('placeholder');
 
-		var placeInject = $('<span>').addClass('placeholder3').text(placeText);
-		var inputInject = $('<input>').attr("type","text").addClass('input3');
-
-		$('.input').append(inputInject, placeInject);
 
 		$('.input').addClass('style3');
 		var $style3 = $('.style3');
@@ -206,7 +214,5 @@ $.fn.sexyForm = function (style){
 			})
 		};
 	}
-
-
 };
 	

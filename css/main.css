@@ -132,15 +132,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box; }
 
 body {
-  width: 100%;
-  *zoom: 1; }
-  body:before, body:after {
-    content: "";
-    display: table; }
-  body:after {
-    clear: both; }
-
-body {
   font-family: 'Raleway', sans-serif;
   background: #F0EFEE;
   color: #6A7989; }
@@ -155,4 +146,5 @@ body {
 
 .input {
   display: inline-block;
-  width: 40%; }
+  width: 40%;
+  margin: 0 2.5%; }
