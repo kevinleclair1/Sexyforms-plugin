@@ -10,9 +10,9 @@ $(function() {
 });  
 ```
 
-Include this in your HTML markup and the form will be created inside the `span` element with a class of `sexyform`
+Include this in your HTML markup and the form will be created inside the `span` element with a class of `sexyform`.  You must also give each form its own id.
 ```
-<span data-placeholder='Write your placeholder here' class= "sexyform"></span>
+<span data-placeholder='Write your placeholder here' class= "sexyform" id="insert id here"></span>
 ```
 
 #How It Works
