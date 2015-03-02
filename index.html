@@ -2,35 +2,51 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="css/main.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sexyforms.js</title>
 	<link rel="stylesheet" href="css/sexyForms.css">
+	<link rel="stylesheet" href="css/main.css">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/animate.css">
 </head>
 <body>
-<div class="container">
+<div class="howToShow animated pulse infinite"><i class="fa fa-question"></i></div>
+<div class="container animated bounceInUp">
 	<h1>Sexyforms.js</h1>
 	<h3>Give your input forms some sex appeal</h3>
 	<div class="formContainer">
-		<span data-placeholder='First Name' class= "input"></span>
-		<span data-placeholder='Last Name' class= 'input'></span>
+		<span data-placeholder='First Name' class= "sexyform"></span>
+		<span data-placeholder='Last Name' class= 'sexyform'></span>
 	</div>
 	<select name="styles" class="stylesNav">
 		<option value="one" selected>One</option>
 		<option value="two">Two</option>
 		<option value="three">Three</option>
 	</select>
+	<a href="https://github.com/kevinleclair1/Sexyforms.js">View on Github</a>
+	<p>Something cool from <a href="https://twitter.com/KevinLeClairrr">Kevin LeClair</a></p>
+	<p>Form designs inspired by the <a href="http://tympanus.net/codrops/2015/01/08/inspiration-text-input-effects/">Codrops article</a></p>
+</div>
+<div class="howTo">
+<div class="exit animated pulse infinite"><i class="fa fa-times"></i></div>
 	<div class="howToWrapper">
 		<h2>Usage</h2>
 		<p>Sexyforms.js will allow you to create great looking input forms with ease.  Only a small amount of HTML and Javascript is required.</p>
 		<h2>Getting Started</h2>
-		<p></p>
+		<p>Simply include colour.js in your scripts folder, and call the function in your main.js.  Ensure that you have linked jQuery in your HTML file. Pass the .sexyForm function the style you would like to use.  Also link the sexyForms.css file in your head tag.</p>
+		<pre>
+$(function() {
+	$(.yourInput).sexyForm(style);
+});</pre>
+		<p>Include this in your HTML markup and the form will be created inside the span element with a class of sexyform:</p>
+		<pre>&lt;span data-placeholder='Write your placeholder here' class= "sexyform">&lt;/span&gt;</pre>
+		<h2>How It Works</h2>
+		<p>Sexyforms.js takes a single span element within your HTML and replaces it with a nice looking input form! All extra markup is added with jQuery and then animated on click.  To change the colours and other stylistic aspects of your input forms go into the sexyForms.css file.</p>
 	</div>
-	<a href="#">View on Github</a>
-	<p>Something cool from <a href="#">Kevin LeClair</a></p>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="jquery.sexyForms.js"></script>
+<script src="sexyforms.js"></script>
 <script src="main.js"></script>
 </body>
 </html>

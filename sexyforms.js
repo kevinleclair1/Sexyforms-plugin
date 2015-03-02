@@ -9,16 +9,16 @@ $.fn.sexyForm = function (style){
 	//style 1
 	if ( style === 'one') {
 		//INITIAL HTML MARKUP INJECT
-		var $input = $('.input');
+		var $input = $('.sexyform');
 		for (var i = 0; i < $input.length; i++) {
-			var placeText = $($('.input')[i]).data('placeholder');
+			var placeText = $($input[i]).data('placeholder');
 			var placeInject = $('<span>').addClass('placeholder1').text(placeText);
 			var inputInject = $('<input>').attr("type","text").addClass('input1');
 			$($input[i]).append(inputInject, placeInject)
 		};
 		
 		//ADDING STYLE CLASS
-		$('.input').addClass('style1');
+		$input.addClass('style1');
 		var $style1 = $('.style1');
 		$style1.data('style', 1);
 		//ANIMATIONS ON CLICK
@@ -30,7 +30,7 @@ $.fn.sexyForm = function (style){
 			var $currentInput = $open.children('input')
 			var $currentPlace = $open.children('span')
 			var $currentBox = $open;
-
+			console.log($currentPlace);
 			if($(this).data('original-styles') === undefined) {
 				//Store data for original styles in object
 				//So later you can get it and animate it back.
@@ -40,9 +40,7 @@ $.fn.sexyForm = function (style){
 					//$currentPlace.css('top')
 				});
 			}
-		
-			$currentInput.trigger('focus');
-			console.log('focused');
+	
 			if ( $currentInput.val() === "") {
 				$currentPlace.animate({
 					top: '-30%',
@@ -56,7 +54,7 @@ $.fn.sexyForm = function (style){
 	}; //end of style one js
 	if ( style === 'two') {
 		//style 2
-		var $input = $('.input');
+		var $input = $('.sexyform');
 		for (var i = 0; i < $input.length; i++) {
 			var placeText = $($input[i]).data('placeholder');
 			var placeInject = $('<span>').addClass('placeholder2').text(placeText);
@@ -67,7 +65,7 @@ $.fn.sexyForm = function (style){
 		
 
 
-		$('.input').addClass('style2');
+		$input.addClass('style2');
 		var $style2 = $('.style2');
 		$style2.data('style', 2);
 
@@ -105,7 +103,7 @@ $.fn.sexyForm = function (style){
 	}; //end of style 2 scripts
 	if ( style === 'three') {
 		//style 3
-		var $input = $('.input');
+		var $input = $('.sexyform');
 
 		for (var i = 0; i < $input.length; i++) {
 			var placeText = $($input[i]).data('placeholder');
@@ -117,7 +115,7 @@ $.fn.sexyForm = function (style){
 		//INITIAL HTML MARKUP INJECT
 
 
-		$('.input').addClass('style3');
+		$input.addClass('style3');
 		var $style3 = $('.style3');
 		$style3.data('style', 3);
 		var $place3 = $('.placeholder3');
@@ -131,7 +129,6 @@ $.fn.sexyForm = function (style){
 			var $open = $('.form-open');
 			var $currentInput = $open.children('input')
 			var $currentPlace = $open.children('span')
-
 			if($(this).parent().data('original-styles') === undefined) {
 				//Store data for original styles in object
 				//So later you can get it and animate it back.
@@ -167,6 +164,7 @@ $.fn.sexyForm = function (style){
 				if($(element).find('input').val() === '') {
 					//If so remove class so we stop looking at it
 					$(element).removeClass('form-open');
+					console.log('removed');
 					//Pass element to closeBox function
 					closeBox($(element));
 				}
@@ -175,17 +173,13 @@ $.fn.sexyForm = function (style){
 	});
 
 	function closeBox(element) {
-		console.log('hey');
 		//Get the element that needs to be closed
 		var $el = $(element);
 		//Grab the data we set on it
 		var originalData = $el.data('original-styles');
 		var style = $el.data('style');
-		console.log(style);
-		console.log($el);
 		//Reset the input
 		if ( style === 1 ) {
-			console.log("hey");
 			$el.find('span').animate({
 				top: originalData.startPos,
 			});
