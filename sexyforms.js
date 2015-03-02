@@ -125,7 +125,7 @@ $.fn.sexyForm = function (style){
 			e.stopPropagation();
 			$(this).parent().addClass('form-open');
 			//ANIMATION VARIABLES
-			var $currentId = '#' + $(this).attr('id');
+			var $currentId = '#' + $(this).parent().attr('id');
 			var $currentInput = $($currentId).children('input');
 			var $currentPlace = $($currentId).children('span');
 			if($(this).parent().data('original-styles') === undefined) {
