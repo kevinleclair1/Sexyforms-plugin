@@ -163,7 +163,6 @@ $.fn.sexyForm = function (style){
 				if($(element).find('input').val() === '') {
 					//If so remove class so we stop looking at it
 					$(element).removeClass('form-open');
-					console.log('removed');
 					//Pass element to closeBox function
 					closeBox($(element));
 				}
