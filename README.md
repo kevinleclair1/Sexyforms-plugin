@@ -2,7 +2,7 @@
 Sexyforms.js will allow you to create great looking input forms with ease.  Only a small amount of HTML and Javascript is required.  
 
 #Getting Started
-Include `sexyforms.js` and call the function in your `main.js`.  Pass the .sexyForm function the style you would like to use.  Pass the `.sexyForm()` function the style you would like to use for your form.  Also link the `sexyForms.css` file in your head tag.
+Include `sexyforms.js` and call the function in your `main.js`.  Pass the .sexyForm function the style you would like to use.  Ensure that you have linked jQuery in your HTML file.  Pass the `.sexyForm()` function the style you would like to use for your form.  Also link the `sexyForms.css` file in your head tag.
 
 ```
 $(function() {
