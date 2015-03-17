@@ -7,6 +7,11 @@ $.fn.sexyForm = function (style){
 	// if statement 
 	// animations should be included in form box click function
 	//style 1
+	$('.sexyform').on('click',function(){
+		$(this).find('input').trigger('focus');
+	});
+
+
 	if ( style === 'one') {
 		//INITIAL HTML MARKUP INJECT
 		var $input = $('.sexyform');
@@ -22,18 +27,21 @@ $.fn.sexyForm = function (style){
 		var $style1 = $('.style1');
 		$style1.data('style', 1);
 		//ANIMATIONS ON CLICK
-		$style1.on('click', function(e){
+		$style1.on('focus', 'input',function(e){
 			e.stopPropagation();
-			$(this).addClass('form-open');
+			
+			var $form = $(this).parent();
+
+			$form.addClass('form-open');
 			//ANIMATION VARIABLES
-			var $currentId = '#' + $(this).attr('id');
+			var $currentId = '#' + $form.attr('id');
 			var $currentInput = $($currentId).children('input');
 			var $currentPlace = $($currentId).children('span');
 			var $currentBox = $($currentId);
-			if($(this).data('original-styles') === undefined) {
+			if($form.data('original-styles') === undefined) {
 				//Store data for original styles in object
 				//So later you can get it and animate it back.
-				$(this).data('original-styles', {
+				$form.data('original-styles', {
 					startPad: $currentBox.css('padding'),
 					startPos: '50%'
 					//$currentPlace.css('top')
@@ -52,6 +60,7 @@ $.fn.sexyForm = function (style){
 		}); //end of style1 click listener
 	}; //end of style one js
 	if ( style === 'two') {
+
 		//style 2
 		var $input = $('.sexyform');
 		for (var i = 0; i < $input.length; i++) {
@@ -69,25 +78,27 @@ $.fn.sexyForm = function (style){
 		$style2.data('style', 2);
 
 		//ANIMATIONS
-		$style2.on('click', function(e){
+		$style2.on('focus', 'input',function(e){
 			e.stopPropagation();
-			$(this).addClass('form-open');
+
+			var $form = $(this).parent();
+
+			$form.addClass('form-open');
 			//ANIMATION VARIABLES
-			var $currentId = '#' + $(this).attr('id');
+			var $currentId = '#' + $form.attr('id');
 			var $currentInput = $($currentId).children('input');
 			var $currentPlace = $($currentId).children('span');
 			//Check it current element has data attribure
-			if($(this).data('original-styles') === undefined) {
+			if($form.data('original-styles') === undefined) {
 				//Store data for original styles in object
 				//So later you can get it and animate it back.
-				$(this).data('original-styles', {
+				$form.data('original-styles', {
 					startFontInput: $currentInput.css('font-size'),
 					startPadInput: $currentInput.css('padding'),
 					startFontPlace: $currentPlace.css('font-size')
 				});
 			}
 			if ( $currentInput.val() === "") {
-				console.log('clicked');
 				$currentInput.animate({
 					fontSize: '30px',
 					padding: '15px',
@@ -96,7 +107,6 @@ $.fn.sexyForm = function (style){
 				$currentPlace.animate({
 					fontSize: '1.3em'
 				});
-				$currentInput.trigger('focus');
 			};
 		}); //end of $style2.click
 	}; //end of style 2 scripts
@@ -121,7 +131,7 @@ $.fn.sexyForm = function (style){
 
 		//ANIMATIONS
 
-		$place3.on('click', function(e){
+		$style3.on('focus', 'input', function(e){
 			e.stopPropagation();
 			$(this).parent().addClass('form-open');
 			//ANIMATION VARIABLES
@@ -146,12 +156,12 @@ $.fn.sexyForm = function (style){
 					width: '30%',
 					left: '70%',
 				})
-				$currentInput.trigger('focus');
 			};
 		});
 	}
 	//Check on click of the document 
-	$(document).on('click', function() {
+	$('.sexyform').on('blur', 'input' ,function() {
+		console.log("Blurred!!");
 		//Grab elements with the calss of .form-open
 		var $forms = $('.form-open');
 		//If we have some
@@ -160,7 +170,8 @@ $.fn.sexyForm = function (style){
 			$forms.each(function(index, element) {
 				//Each returns the index of the element and the element itself
 				//Check if elements input is blank
-				if($(element).find('input').val() === '') {
+				if(!$(element).find('input').val()) {
+					console.log("Close it!");
 					//If so remove class so we stop looking at it
 					$(element).removeClass('form-open');
 					//Pass element to closeBox function
@@ -171,10 +182,12 @@ $.fn.sexyForm = function (style){
 	});
 
 	function closeBox(element) {
+		console.log("Closing", element);
 		//Get the element that needs to be closed
 		var $el = $(element);
 		//Grab the data we set on it
 		var originalData = $el.data('original-styles');
+		console.log(originalData);
 		var style = $el.data('style');
 		//Reset the input
 		if ( style === 1 ) {
